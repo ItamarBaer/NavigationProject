@@ -20,7 +20,7 @@ Navigation Web App is a work in progress aimed at gaining practical experience i
 
 ## Demo
 
-![Demo](./demo/demo.gif)
+<img src="./demo/demo.gif" width="421" height="500">
 
 ## Credits
 Noa Velner and Itamar Baer
