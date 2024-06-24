@@ -1,0 +1,44 @@
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 50px;  /* Adjust the height based on your design */
+  width: 100%;
+  background-color: #1b2738;
+  color: #fff;
+  padding: 0 10px;  /* Apply padding only to the sides */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.top-bar .spacer {
+  flex-grow:1;
+}
+
+.top-bar .buttons {
+display: flex;
+justify-content: flex-end;
+}
+
+.top-bar .button {
+  display: flex;
+  background-color: #1b2738;
+  color: #fff;
+  padding: 10px 15px;
+  margin: 5px;
+  margin-left:10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  text-decoration: none; /* Remove underlines from links */
+}
+
+
+/* Hover effect */
+.top-bar .button:hover {
+  background-color: #2980b9;
+}

@@ -1,0 +1,143 @@
+{% load render_bundle from webpack_loader %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- ... -->
+    {% render_bundle 'main' %}
+</head>
+<body>
+    <!-- ... -->
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en"> 
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+        <div id="map" style= "height: 600px; width: 600px "> </div>
+        
+        
+        <script>
+            var map = L.map('map').setView([31.0461, 34.8516], 7.5);
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+            
+            var prevClick = null;
+            var nodes = []
+            var lines = []
+            var markers = []
+
+            map.on('click',(event) => {
+
+            let lat = event.latlng.lat;
+            let lng = event.latlng.lng;
+            marker = L.marker([event.latlng.lat, event.latlng.lng ]).addTo(map);
+            markers.push(marker);
+            
+
+            if(prevClick) {
+                
+                var line = L.polyline([prevClick,event.latlng],{color:'blue'}).addTo(map);
+                lines.push(line);
+                
+                
+
+            }
+            
+            var formData = new FormData();
+            formData.append('lat', lat);
+            formData.append('lng', lng);
+
+            fetch(`save_point/?latitude=${lat}&longtitude=${lng}`, {method:'POST',body: formData});
+            
+            
+            prevClick = event.latlng;
+        });
+
+        function clean_map() {
+            for (var i =0 ; i<lines.length ; i++){
+                map.removeLayer(lines[i]);
+            }
+            for (var i =0 ; i<markers.length ; i++){
+                map.removeLayer(markers[i]);
+            }
+            prevClick = null;
+            lines = [];
+            markers = [];
+        }
+
+        function reset_route() {
+            fetch('reset_route/',{method:'POST'});
+        }
+        window.onload = reset_route;
+
+        function undo() {
+            if (markers.length>1){
+                map.removeLayer(lines.pop());
+                map.removeLayer(markers.pop());
+                prevClick = markers[markers.length - 1].getLatLng();
+
+            }
+            else if (markers.length==1)
+            {
+                map.removeLayer(markers.pop());
+                prevClick = null;
+            }
+        }
+
+        function draw_generated_route() {
+            var line = L.polyline(nodes).addTo(map);
+            lines.push(line)
+        }
+
+        </script>
+
+    </head>   
+    <body>
+
+
+        <h1>Weather: </h1>
+        <div> 
+            <img id="icon" alt="Weather Icon">
+            <p> Temperature: <span id="temperature"></span></p>
+            <p> Humidity: <span id="humidity"></span> %</p>
+            <p> Sunrise: <span id="sunrise"></span></p>
+            <p> Sunset: <span id="sunset"></span></p>
+        </div>
+
+
+
+        <button id="GenerateRoute" onclick="clean_map()">
+            Generate Route
+        </button>
+
+        <button id = "Undo" onclick = "undo()">
+            Undo
+        </button>
+
+        
+    <script>
+
+        document.getElementById('GenerateRoute').addEventListener('click',function(){fetch('generate_route/',{method:'POST'}).then(response => response.json()).then(data=>{
+            if (data.status === 'success') {
+                document.getElementById('temperature').textContent = data.weather_data['temperature'];
+                document.getElementById('humidity').textContent = data.weather_data['humidity'];
+                document.getElementById('icon').src = data.weather_data['icon'];
+                document.getElementById('sunrise').textContent = data.weather_data['sunrise'];
+                document.getElementById('sunset').textContent = data.weather_data['sunset'];
+                nodes = data.shortest_path
+                clean_map()
+                draw_generated_route()
+                
+            }
+        })});
+        document.getElementById('Undo').addEventListener('click',function(){fetch('undo/',{method:'POST'})} );
+
+    </script>
+    </body>
+  
+</html> -->

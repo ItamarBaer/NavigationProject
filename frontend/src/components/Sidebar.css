@@ -1,0 +1,44 @@
+.sidebar {
+    /* display:flex; */
+    position: fixed;
+    top: 30px;
+    right:-300px; /* Initial position outside the viewport */
+    width: 300px;
+    height: 100%;
+    background-color: #f0f0f0;
+    color:black;
+    /* overflow-x: hidden; */
+    transition: right 0.3s ease; /* Add transition property */
+  }
+  
+  .sidebar.open {
+    right: 0;
+  }
+
+  .save-button {
+    position: fixed;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    /* display: flex;
+    justify-content: ; */
+
+  }
+  
+  .save-button:hover {
+    background-color: #2980b9;
+  }
+
+  .save-container {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8%;
+  }

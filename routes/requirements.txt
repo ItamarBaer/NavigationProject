@@ -1,0 +1,8 @@
+Django==4.2.7
+geopandas==0.13.2
+geopy==2.4.0
+networkx==3.1
+osmnx==1.7.1
+pytz==2023.3.post1
+Requests==2.31.0
+Shapely==2.0.2

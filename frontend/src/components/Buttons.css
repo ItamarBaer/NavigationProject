@@ -1,0 +1,98 @@
+/* Buttons.css */
+
+.button-container {
+    opacity: 0.9;
+    z-index: 999;
+    display: flex;
+    position: fixed;
+    top: 90%;
+    left: 50%;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(-50%);
+    height: 10vh; /* Adjust as needed to center vertically within the viewport */
+  }
+
+.button {
+    background-color: #3498db;
+    color: #000000;
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #2980b9;
+  }
+  
+  .button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transition: none;
+  }
+  .button img {
+    width: 22px; /* Adjust the width to your preferred icon size */
+    height: 22px; /* Adjust the height to your preferred icon size */
+    margin-right: 0px; /* Adjust the margin to provide space between the icon and text */
+  }
+
+  .transportation-buttons {
+    opacity: 0.9;
+    z-index: 999;
+    display: flex;
+
+    flex-direction: column;
+    position: fixed;
+    top: 7%; /* Adjust the top value as needed */
+    right: 1.5%; /* Adjust the right value as needed */
+    justify-content: flex-start;
+    align-items: flex-end;
+    transition: margin-right 0.3s ease;
+  }
+  .transportation-buttons.sidebar-open {
+    margin-right: 300px; /* Adjust the margin to fit the sidebar width */
+    transition: margin-right 0.3s ease; /* Ensure transition is applied */
+  }
+  
+  .transportation-buttons button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #628cc7;
+    color: #fff;
+    padding: 15px; /* Set a fixed padding for a square button */
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 8px;
+    transition: background-color 0.3s ease;
+    width: 40px; /* Set a fixed width */
+    height: 40px; /* Set the height to match the width for a square button */
+    text-align: center; /* Center text within the button */
+  }
+
+  .transportation-buttons button img {
+    width: 24px; /* Adjust the width to your preferred icon size */
+    height: 24px; /* Adjust the height to your preferred icon size */
+    margin-right: 0px; /* Adjust the margin to provide space between the icon and text */
+  }
+  
+  .transportation-buttons button:hover {
+    background-color: #354b6b;
+  }
+  
+  .transportation-buttons button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transition: none;
+  }
+
+  .transportation-buttons button.active {
+    background-color: #354b6b;
+  }

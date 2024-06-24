@@ -1,0 +1,40 @@
+
+
+#elevationChart {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 16px;
+  }
+  
+  .elevation-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .elevation-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 16px;
+  }
+  
+  .elevation-stat {
+    text-align: center;
+  }
+  
+  .elevation-value {
+    font-size: 1.2em;
+  }
+  
+  .up-arrow {
+    font-size: 1em;
+    font-weight: bolder;
+    color: rgb(179, 62, 62);
+  }
+
+  .down-arrow {
+    font-size: 1em;
+    font-weight: bold;
+    color: rgb(71, 71, 221);
+  }
+  
